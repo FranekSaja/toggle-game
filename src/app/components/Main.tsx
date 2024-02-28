@@ -4,6 +4,7 @@ import Toggle from "./Toggle";
 import Profile from "./Profile";
 import Button from "./Button";
 import ProfileEl from "./ProfileEl";
+//daje tu komentarz, żeby było co commitować//
 
 function Main() {
   const [imExist, setImExist] = useState(false);
