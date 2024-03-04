@@ -4,46 +4,75 @@ import Toggle from "./Toggle";
 import Profile from "./Profile";
 import Button from "./Button";
 import ProfileEl from "./ProfileEl";
-//daje tu komentarz, żeby było co commitować//
 
 function Main() {
-  const [imExist, setImExist] = useState(false);
-  const [imHuman, setImHuman] = useState(false);
-  const [man, setMan] = useState(false);
-  const [woman, setWoman] = useState(false);
-  const [prettierThanAgata, setImPrettierThanAgata] = useState(false);
-  const [megaWaz, setMegaWaz] = useState(false);
-  const [nonBinary, setNonBinary] = useState(false);
-  const [inteligent, setInteligent] = useState(false);
-  const [left, setLeft] = useState(false);
-  const [snap, setSnap] = useState(false);
-  const [madePage, setMadePage] = useState(false);
-  const [lol, setLol] = useState(false);
-  const [autism, setAutism] = useState(false);
-  const [girl, setGirl] = useState(false);
-  const [sigma, setSigma] = useState(false);
-  const [gay, setGay] = useState(false);
-  const [lesbian, setLesbian] = useState(false);
-  const [kid, setKid] = useState(false);
-  const [fortnite, setFortnite] = useState(false);
-  const [cheat, setCheat] = useState(false);
-  const [kidGirl, setKidGirl] = useState(false);
-  const [pedo, setPedo] = useState(false);
-  const [boy, setBoy] = useState(false);
-  const [kidBoyfriend, setKidBoyfriend] = useState(false);
+  interface PersonType {
+    imExist: boolean;
+    imHuman: boolean;
+    man: boolean;
+    woman: boolean;
+    prettierThanAgata: boolean;
+    megaWaz: boolean;
+    nonBinary: boolean;
+    inteligent: boolean;
+    left: boolean;
+    snap: boolean;
+    madePage: boolean;
+    lol: boolean;
+    autism: boolean;
+    girl: boolean;
+    sigma: boolean;
+    gay: boolean;
+    lesbian: boolean;
+    kid: boolean;
+    fortnite: boolean;
+    cheat: boolean;
+    kidGirl: boolean;
+    pedo: boolean;
+    boy: boolean;
+    kidBoyfriend: boolean;
+  }
+
+  const personObject: PersonType = {
+    imExist: false,
+    imHuman: false,
+    man: false,
+    woman: false,
+    prettierThanAgata: false,
+    megaWaz: false,
+    nonBinary: false,
+    inteligent: false,
+    left: false,
+    snap: false,
+    madePage: false,
+    lol: false,
+    autism: false,
+    girl: false,
+    sigma: false,
+    gay: false,
+    lesbian: false,
+    kid: false,
+    fortnite: false,
+    cheat: false,
+    kidGirl: false,
+    pedo: false,
+    boy: false,
+    kidBoyfriend: false,
+  };
+
+  const [person, setPerson] = useState<PersonType>(personObject);
   const [profile, setProfile] = useState(false);
 
   const toggleState = (
-    state: boolean,
-    setState: any,
-    object: boolean,
+    state: keyof PersonType | any,
+    object: keyof PersonType | any,
     switchStateTrue: () => void,
     switchStateFalse: () => void
   ) => {
     if (!state) {
-      setState(true);
+      setPerson({ ...person, [state]: true });
     } else {
-      setState(false);
+      setPerson({ ...person, [state]: false });
     }
 
     if (state === object) {
@@ -63,18 +92,16 @@ function Main() {
         <div className="flex items-start justify-center w-80 gap-10 flex-col">
           <Toggle
             text="I exist"
-            state={imExist}
+            state={personObject.imExist}
             change={() => {
               toggleState(
-                imExist,
-                setImExist,
-                imExist,
+                personObject.imExist,
+                personObject.imExist,
                 () => {
-                  setImPrettierThanAgata(false);
+                  setPerson({ ...person, prettierThanAgata: false });
                 },
                 () => {
-                  setMegaWaz(false);
-                  setMadePage(false);
+                  setPerson({ ...person, megaWaz: true, madePage: true });
                 }
               );
             }}
@@ -82,20 +109,21 @@ function Main() {
 
           <Toggle
             text="I'm Human"
-            state={imHuman}
+            state={personObject.imHuman}
             change={() => {
               toggleState(
-                imHuman,
-                setImHuman,
-                imHuman,
+                personObject.imHuman,
+                personObject.imHuman,
                 () => {
-                  setMegaWaz(false);
-                  setNonBinary(false);
+                  setPerson({ ...person, megaWaz: false, nonBinary: false });
                 },
                 () => {
-                  setMadePage(false);
-                  setMan(false);
-                  setWoman(false);
+                  setPerson({
+                    ...person,
+                    madePage: false,
+                    man: false,
+                    woman: false,
+                  });
                 }
               );
             }}
@@ -103,29 +131,34 @@ function Main() {
 
           <Toggle
             text="I'm Man"
-            state={man}
+            state={personObject.man}
             change={() => {
               toggleState(
-                man,
-                setMan,
-                man,
+                personObject.man,
+                personObject.man,
                 () => {
-                  setWoman(false);
-                  setNonBinary(false);
-                  setLesbian(false);
-                  if (lol) {
-                    setGay(true);
-                    setGirl(false);
-                    setKidGirl(false);
+                  setPerson({
+                    ...person,
+                    woman: false,
+                    nonBinary: false,
+                    lesbian: false,
+                    imHuman: true,
+                  });
+
+                  if (personObject.lol) {
+                    setPerson({
+                      ...person,
+                      gay: true,
+                      girl: false,
+                      kidGirl: false,
+                    });
                   }
-                  if (boy) {
-                    setGay(true);
+                  if (personObject.boy) {
+                    setPerson({ ...person, gay: true });
                   }
-                  setImHuman(true);
                 },
                 () => {
-                  setMadePage(false);
-                  setGay(false);
+                  setPerson({ ...person, madePage: false, gay: false });
                 }
               );
             }}
@@ -133,62 +166,69 @@ function Main() {
 
           <Toggle
             text="I'm Woman"
-            state={woman}
+            state={personObject.woman}
             change={() => {
               toggleState(
-                woman,
-                setWoman,
-                woman,
+                personObject.woman,
+
+                personObject.woman,
                 () => {
-                  setMan(false);
-                  setNonBinary(false);
-                  setMadePage(false);
-                  setGay(false);
-                  if (girl) {
-                    setLesbian(true);
-                    setImHuman(true);
+                  setPerson({
+                    ...person,
+                    man: false,
+                    nonBinary: false,
+                    madePage: false,
+                    gay: false,
+                  });
+
+                  if (personObject.girl) {
+                    setPerson({ ...person, lesbian: true, imHuman: true });
                   }
                 },
                 () => {
-                  setLesbian(false);
+                  setPerson({ ...person, lesbian: false });
                 }
               );
             }}
           />
           <Toggle
             text="I'm Intelligent"
-            state={inteligent}
+            state={personObject.inteligent}
             change={() => {
               toggleState(
-                inteligent,
-                setInteligent,
-                inteligent,
+                personObject.inteligent,
+                personObject.inteligent,
                 () => {
-                  setLeft(false);
-                  setSnap(false);
-                  setLol(false);
+                  setPerson({
+                    ...person,
+                    left: false,
+                    snap: false,
+                    lol: false,
+                  });
                 },
                 () => {
-                  setMadePage(false);
-                  setSigma(false);
+                  setPerson({ ...person, madePage: false, sigma: false });
                 }
               );
             }}
           />
           <Toggle
             text="I'm non-binary"
-            state={nonBinary}
+            state={personObject.nonBinary}
             change={() => {
               toggleState(
-                nonBinary,
-                setNonBinary,
-                nonBinary,
+                personObject.nonBinary,
+
+                personObject.nonBinary,
                 () => {
-                  setImHuman(false);
-                  setMan(false);
-                  setWoman(false);
-                  setMadePage(false);
-                  setGay(false);
+                  setPerson({
+                    ...person,
+                    imHuman: false,
+                    man: false,
+                    woman: false,
+                    madePage: false,
+                    gay: false,
+                  });
                 },
                 () => {}
               );
@@ -197,29 +237,31 @@ function Main() {
 
           <Toggle
             text="I'm Kid"
-            state={kid}
+            state={personObject.kid}
             change={() => {
               toggleState(
-                kid,
-                setKid,
-                kid,
+                personObject.kid,
+
+                personObject.kid,
                 () => {
-                  if (girl) {
-                    setKidGirl(true);
+                  if (personObject.girl) {
+                    setPerson({ ...person, kidGirl: true });
                   }
-                  setPedo(false);
-                  if (boy) {
-                    setKidBoyfriend(true);
+
+                  if (personObject.boy) {
+                    setPerson({ ...person, kidBoyfriend: true });
                   }
-                  setMadePage(false);
+
+                  setPerson({ ...person, pedo: false, madePage: false });
                 },
                 () => {
-                  setFortnite(false);
-                  if (kidGirl) {
-                    setPedo(true);
+                  setPerson({ ...person, fortnite: false });
+
+                  if (personObject.kidGirl) {
+                    setPerson({ ...person, pedo: true });
                   }
-                  if (kidBoyfriend) {
-                    setPedo(true);
+                  if (personObject.kidBoyfriend) {
+                    setPerson({ ...person, pedo: true });
                   }
                 }
               );
@@ -227,26 +269,30 @@ function Main() {
           />
           <Toggle
             text="I have boyfriend"
-            state={boy}
+            state={personObject.boy}
             change={() => {
               toggleState(
-                boy,
-                setBoy,
-                boy,
+                personObject.boy,
+
+                personObject.boy,
                 () => {
-                  if (man) {
-                    setGay(true);
-                    setSigma(false);
+                  if (personObject.man) {
+                    setPerson({ ...person, gay: true, sigma: false });
                   }
-                  setGirl(false);
-                  setKidGirl(false);
-                  if (kid) {
-                    setKidBoyfriend(true);
+
+                  if (personObject.kid) {
+                    setPerson({ ...person, kidBoyfriend: true });
                   }
-                  setMadePage(false);
+
+                  setPerson({
+                    ...person,
+                    girl: false,
+                    kidGirl: false,
+                    madePage: false,
+                  });
                 },
                 () => {
-                  setKidBoyfriend(false);
+                  setPerson({ ...person, kidBoyfriend: false });
                 }
               );
             }}
@@ -255,100 +301,113 @@ function Main() {
         <div className="flex items-start justify-center w-80 gap-10 flex-col">
           <Toggle
             text="I have a girlfriend"
-            state={girl}
+            state={personObject.girl}
             change={() => {
               toggleState(
-                girl,
-                setGirl,
-                girl,
+                personObject.girl,
+                personObject.girl,
+
                 () => {
-                  setLol(false);
-                  if (woman) {
-                    setLesbian(true);
+                  if (personObject.woman) {
+                    setPerson({ ...person, lesbian: true });
                   }
-                  setMadePage(false);
-                  if (kid) {
-                    setKidGirl(true);
+
+                  if (personObject.kid) {
+                    setPerson({ ...person, kidGirl: true });
                   }
-                  setBoy(false);
-                  setKidBoyfriend(false);
-                  if (!woman) {
-                    setLol(false);
+
+                  if (!personObject.woman) {
+                    setPerson({ ...person, lol: false });
                   }
+
+                  setPerson({
+                    ...person,
+                    lol: false,
+                    madePage: false,
+                    boy: false,
+                    kidBoyfriend: false,
+                  });
                 },
                 () => {
-                  setKidGirl(false);
+                  setPerson({ ...person, kidGirl: false });
                 }
               );
             }}
           />
           <Toggle
             text="My boyfriend is under 13"
-            state={kidBoyfriend}
+            state={personObject.kidBoyfriend}
             change={() => {
               toggleState(
-                kidBoyfriend,
-                setKidBoyfriend,
-                kidBoyfriend,
+                personObject.kidBoyfriend,
+                personObject.kidBoyfriend,
+
                 () => {
-                  setBoy(true),
-                    setKid(true),
-                    setMadePage(false),
-                    setGirl(false),
-                    setKidGirl(false);
-                  if (man) {
-                    setGay(true);
+                  setPerson({
+                    ...person,
+                    boy: true,
+                    kid: true,
+                    madePage: false,
+                    girl: false,
+                    kidGirl: false,
+                  });
+
+                  if (personObject.man) {
+                    setPerson({ ...person, gay: true });
                   }
                 },
                 () => {
-                  setBoy(false);
-                  setKid(false);
-                  setPedo(false);
+                  setPerson({ ...person, boy: false, kid: false, pedo: false });
                 }
               );
             }}
           />
           <Toggle
             text="My girlfriend is under 13"
-            state={kidGirl}
+            state={personObject.kidGirl}
             change={() => {
               toggleState(
-                kidGirl,
-                setKidGirl,
-                kidGirl,
+                personObject.kidGirl,
+                personObject.kidGirl,
                 () => {
-                  setGirl(true);
-                  setKid(true);
-                  setPedo(false);
-                  setBoy(false);
-                  setKidBoyfriend(false);
-                  setMadePage(false);
-                  if (!woman) {
-                    setLol(false);
+                  setPerson({
+                    ...person,
+                    girl: true,
+                    kid: true,
+                    pedo: false,
+                    boy: false,
+                    kidBoyfriend: false,
+                    madePage: false,
+                  });
+
+                  if (!personObject.woman) {
+                    setPerson({ ...person, lol: false });
                   }
-                  if (woman) {
-                    setLesbian(true);
+                  if (personObject.woman) {
+                    setPerson({ ...person, lesbian: true });
                   }
                 },
                 () => {
-                  setGirl(false);
-                  setKid(false);
+                  setPerson({ ...person, girl: false, kid: false });
                 }
               );
             }}
           />
           <Toggle
             text="I vote for the left"
-            state={left}
+            state={personObject.left}
             change={() => {
               toggleState(
-                left,
-                setLeft,
-                left,
+                personObject.left,
+                personObject.left,
+
                 () => {
-                  setInteligent(false);
-                  setMadePage(false);
-                  setSigma(false);
+                  setPerson({
+                    ...person,
+                    inteligent: false,
+                    madePage: false,
+                    sigma: false,
+                  });
                 },
                 () => {}
               );
@@ -356,65 +415,83 @@ function Main() {
           />
           <Toggle
             text="I'm Sigma"
-            state={sigma}
+            state={personObject.sigma}
             change={() => {
               toggleState(
-                sigma,
-                setSigma,
-                sigma,
+                personObject.sigma,
+                personObject.sigma,
+
                 () => {
-                  setLol(false);
-                  setLeft(false), setInteligent(true);
-                  setSnap(false);
-                  setGay(false);
-                  setPedo(false);
+                  setPerson({
+                    ...person,
+                    lol: false,
+                    left: false,
+                    inteligent: true,
+                    snap: false,
+                    gay: false,
+                    pedo: false,
+                  });
                 },
                 () => {
-                  setMadePage(false);
+                  setPerson({ ...person, madePage: false });
                 }
               );
             }}
           />
           <Toggle
             text="I'm Gay"
-            state={gay}
+            state={personObject.gay}
             change={() => {
               toggleState(
-                gay,
-                setGay,
-                gay,
+                personObject.gay,
+                personObject.gay,
+
                 () => {
-                  setSigma(false),
-                    setMadePage(false),
-                    setMan(true),
-                    setWoman(false);
-                  setNonBinary(false);
-                  setLesbian(false);
-                  setImHuman(true);
+                  setPerson({
+                    ...person,
+                    sigma: false,
+                    madePage: false,
+                    man: true,
+                    woman: false,
+                    nonBinary: false,
+                    lesbian: false,
+                    imHuman: true,
+                  });
                 },
                 () => {
-                  setLol(false);
-                  setBoy(false);
-                  setKidBoyfriend(false);
+                  setPerson({
+                    ...person,
+                    lol: false,
+                    boy: false,
+                    kidBoyfriend: false,
+                  });
                 }
               );
             }}
           />
           <Toggle
             text="I'm Lesbian"
-            state={lesbian}
+            state={personObject.lesbian}
             change={() => {
               toggleState(
-                lesbian,
-                setLesbian,
-                lesbian,
+                personObject.lesbian,
+                personObject.lesbian,
+
                 () => {
-                  setWoman(true), setMan(false), setGay(false), setSigma(false);
-                  setNonBinary(false), setMadePage(false), setImHuman(true);
+                  setPerson({
+                    ...person,
+                    woman: true,
+                    man: false,
+                    gay: false,
+                    sigma: false,
+                    nonBinary: false,
+                    madePage: false,
+                    imHuman: false,
+                  });
                 },
                 () => {
-                  if (woman && girl) {
-                    setGirl(false);
+                  if (personObject.woman && personObject.girl) {
+                    setPerson({ ...person, girl: false });
                   }
                 }
               );
@@ -424,51 +501,57 @@ function Main() {
             text="I'm prettier than Agata"
             change={() =>
               toggleState(
-                prettierThanAgata,
-                setImPrettierThanAgata,
-                prettierThanAgata,
+                personObject.prettierThanAgata,
+                personObject.prettierThanAgata,
+
                 () => {
-                  setImExist(false);
-                  setMegaWaz(false);
-                  setMadePage(false);
+                  setPerson({
+                    ...person,
+                    imExist: false,
+                    megaWaz: false,
+                    madePage: false,
+                  });
                 },
                 () => {}
               )
             }
-            state={prettierThanAgata}
+            state={personObject.prettierThanAgata}
           />
         </div>
         <div className="flex items-start justify-center w-80 gap-10 flex-col">
           <Toggle
             text="I have autism"
-            state={autism}
+            state={personObject.autism}
             change={() =>
               toggleState(
-                autism,
-                setAutism,
-                autism,
+                personObject.autism,
+                personObject.autism,
+
                 () => {
-                  setMadePage(false);
+                  setPerson({ ...person, madePage: false });
                 },
                 () => {
-                  setLol(false);
+                  setPerson({ ...person, lol: false });
                 }
               )
             }
           />
           <Toggle
             text="I'm Mega Wąż 9"
-            state={megaWaz}
+            state={personObject.megaWaz}
             change={() =>
               toggleState(
-                megaWaz,
-                setMegaWaz,
-                megaWaz,
+                personObject.megaWaz,
+                personObject.megaWaz,
+
                 () => {
-                  setImExist(true),
-                    setImHuman(false),
-                    setImPrettierThanAgata(false);
-                  setMadePage(false);
+                  setPerson({
+                    ...person,
+                    imExist: true,
+                    imHuman: false,
+                    prettierThanAgata: false,
+                    madePage: false,
+                  });
                 },
                 () => {}
               )
@@ -476,16 +559,19 @@ function Main() {
           />
           <Toggle
             text="I use snapchat"
-            state={snap}
+            state={personObject.snap}
             change={() => {
               toggleState(
-                snap,
-                setSnap,
-                snap,
+                personObject.snap,
+                personObject.snap,
+
                 () => {
-                  setInteligent(false);
-                  setMadePage(false);
-                  setSigma(false);
+                  setPerson({
+                    ...person,
+                    inteligent: false,
+                    madePage: false,
+                    sigma: false,
+                  });
                 },
                 () => {}
               );
@@ -493,36 +579,38 @@ function Main() {
           />
           <Toggle
             text="I made this page"
-            state={madePage}
+            state={personObject.madePage}
             change={() => {
               toggleState(
-                madePage,
-                setMadePage,
-                madePage,
+                personObject.madePage,
+                personObject.madePage,
+
                 () => {
-                  setInteligent(true),
-                    setImHuman(true),
-                    setMan(true),
-                    setImExist(true);
-                  setWoman(false);
-                  setSnap(false);
-                  setMegaWaz(false);
-                  setNonBinary(false);
-                  setImPrettierThanAgata(false);
-                  setLeft(false);
-                  setGirl(true);
-                  setLol(false);
-                  setAutism(false);
-                  setSigma(true);
-                  setGay(false);
-                  setKid(false);
-                  setFortnite(false);
-                  <div>Profile</div>;
-                  setKidGirl(false);
-                  setPedo(false);
-                  setBoy(false);
-                  setKidBoyfriend(false);
-                  setLesbian(false);
+                  setPerson({
+                    ...person,
+                    lesbian: false,
+                    pedo: false,
+                    boy: false,
+                    kidBoyfriend: false,
+                    lol: false,
+                    autism: false,
+                    gay: false,
+                    kid: false,
+                    fortnite: false,
+                    kidGirl: false,
+                    prettierThanAgata: false,
+                    left: false,
+                    girl: true,
+                    woman: false,
+                    snap: false,
+                    megaWaz: false,
+                    nonBinary: false,
+                    inteligent: true,
+                    imHuman: true,
+                    man: true,
+                    imExist: true,
+                    sigma: true,
+                  });
                 },
                 () => {}
               );
@@ -530,23 +618,26 @@ function Main() {
           />
           <Toggle
             text="I play League of Legends"
-            state={lol}
+            state={personObject.lol}
             change={() => {
               toggleState(
-                lol,
-                setLol,
-                lol,
+                personObject.lol,
+                personObject.lol,
+
                 () => {
-                  setInteligent(false),
-                    setAutism(true),
-                    setMadePage(false),
-                    setSigma(false);
-                  if (!woman) {
-                    setGirl(false);
-                    setKidGirl(false);
+                  setPerson({
+                    ...person,
+                    inteligent: false,
+                    autism: true,
+                    sigma: false,
+                    madePage: false,
+                  });
+
+                  if (!personObject.woman) {
+                    setPerson({ ...person, girl: false, kidGirl: false });
                   }
-                  if (man) {
-                    setGay(true);
+                  if (personObject.man) {
+                    setPerson({ ...person, gay: true });
                   }
                 },
                 () => {}
@@ -555,22 +646,27 @@ function Main() {
           />
           <Toggle
             text="I play Fortnite"
-            state={fortnite}
+            state={personObject.fortnite}
             change={() => {
               toggleState(
-                fortnite,
-                setFortnite,
-                fortnite,
+                personObject.fortnite,
+
+                personObject.fortnite,
                 () => {
-                  setKid(true);
-                  if (girl) {
-                    setKidGirl(true);
+                  setPerson({
+                    ...person,
+                    kid: true,
+                    pedo: false,
+                    madePage: false,
+                  });
+
+                  if (personObject.girl) {
+                    setPerson({ ...person, kidGirl: true });
                   }
-                  setPedo(false);
-                  if (boy) {
-                    setKidBoyfriend(true);
+
+                  if (personObject.boy) {
+                    setPerson({ ...person, kidBoyfriend: true });
                   }
-                  setMadePage(false);
                 },
                 () => {}
               );
@@ -578,21 +674,23 @@ function Main() {
           />
           <Toggle
             text="I'm Pedofile"
-            state={pedo}
+            state={personObject.pedo}
             change={() =>
               toggleState(
-                pedo,
-                setPedo,
-                pedo,
+                personObject.pedo,
+                personObject.pedo,
+
                 () => {
-                  setSigma(false);
-                  setMadePage(false);
-                  setKid(false);
-                  setFortnite(false);
+                  setPerson({
+                    ...person,
+                    sigma: false,
+                    madePage: false,
+                    kid: false,
+                    fortnite: false,
+                  });
                 },
                 () => {
-                  setKidGirl(false);
-                  setKidBoyfriend(false);
+                  setPerson({ ...person, kidGirl: false, kidBoyfriend: false });
                 }
               )
             }
@@ -600,9 +698,9 @@ function Main() {
 
           <Toggle
             text="I can cheat toggle game"
-            state={cheat}
+            state={personObject.cheat}
             change={() => {
-              setCheat(false);
+              setPerson({ ...person, cheat: false });
             }}
           />
         </div>
@@ -611,41 +709,51 @@ function Main() {
         <Profile
           text={
             <div className="flex items-start justify-center flex-col">
-              {!imExist && <ProfileEl text="You don't Exist" />}
-              {!imHuman && <ProfileEl text="You are not Human" />}
+              {!personObject.imExist && <ProfileEl text="You don't Exist" />}
+              {!personObject.imHuman && <ProfileEl text="You are not Human" />}
 
-              {megaWaz && <ProfileEl text="You are Mega Wąż 9" />}
-              {kid && <ProfileEl text="You are a Kid" />}
-              {nonBinary && <ProfileEl text="You are Non-binary" />}
-              {man && <ProfileEl text="You are Man" />}
-              {gay && <ProfileEl text="You are Gay" />}
-              {woman && <ProfileEl text="You are Woman" />}
-              {lesbian && <ProfileEl text="You are Lesbian" />}
-              {inteligent ? (
+              {personObject.megaWaz && <ProfileEl text="You are Mega Wąż 9" />}
+              {personObject.kid && <ProfileEl text="You are a Kid" />}
+              {personObject.nonBinary && (
+                <ProfileEl text="You are Non-binary" />
+              )}
+              {personObject.man && <ProfileEl text="You are Man" />}
+              {personObject.gay && <ProfileEl text="You are Gay" />}
+              {personObject.woman && <ProfileEl text="You are Woman" />}
+              {personObject.lesbian && <ProfileEl text="You are Lesbian" />}
+              {personObject.inteligent ? (
                 <ProfileEl text="You are Intelligent" />
               ) : (
                 <ProfileEl text="You are not Intelligent" />
               )}
 
-              {autism && <ProfileEl text="You have autism" />}
-              {boy && !kidBoyfriend && <ProfileEl text="You have boyfriend" />}
-              {boy && kidBoyfriend && (
+              {personObject.autism && <ProfileEl text="You have autism" />}
+              {personObject.boy && !personObject.kidBoyfriend && (
+                <ProfileEl text="You have boyfriend" />
+              )}
+              {personObject.boy && personObject.kidBoyfriend && (
                 <ProfileEl text="Your boyfriend is under 13" />
               )}
-              {girl && !kidGirl && <ProfileEl text="You have girlfriend" />}
-              {girl && kidGirl && (
+              {personObject.girl && !personObject.kidGirl && (
+                <ProfileEl text="You have girlfriend" />
+              )}
+              {personObject.girl && personObject.kidGirl && (
                 <ProfileEl text="Your girlfriend is under 13" />
               )}
-              {left && <ProfileEl text="You are Lefist" />}
+              {personObject.left && <ProfileEl text="You are Lefist" />}
 
-              {snap && <ProfileEl text="You use Snapchat" />}
+              {personObject.snap && <ProfileEl text="You use Snapchat" />}
 
-              {lol && <ProfileEl text="You play League of Legends" />}
-              {fortnite && <ProfileEl text="You play Fortnite" />}
+              {personObject.lol && (
+                <ProfileEl text="You play League of Legends" />
+              )}
+              {personObject.fortnite && <ProfileEl text="You play Fortnite" />}
 
-              {pedo && <ProfileEl text="You are Pedofile" />}
-              {sigma && <ProfileEl text="You are Sigma" />}
-              {madePage && <ProfileEl text="You are Franciszek Saja" />}
+              {personObject.pedo && <ProfileEl text="You are Pedofile" />}
+              {personObject.sigma && <ProfileEl text="You are Sigma" />}
+              {personObject.madePage && (
+                <ProfileEl text="You are Franciszek Saja" />
+              )}
             </div>
           }
           exit={() => {
@@ -663,29 +771,31 @@ function Main() {
       <Button
         blur={`${profile ? "blur" : ""}`}
         click={() => {
-          setImExist(false),
-            setImHuman(false),
-            setMan(false),
-            setWoman(false),
-            setInteligent(false),
-            setNonBinary(false),
-            setKid(false),
-            setBoy(false),
-            setGirl(false),
-            setKidBoyfriend(false),
-            setKidGirl(false),
-            setLeft(false),
-            setSigma(false),
-            setGay(false),
-            setLesbian(false),
-            setImPrettierThanAgata(false),
-            setAutism(false),
-            setMegaWaz(false),
-            setSnap(false),
-            setMadePage(false),
-            setLol(false),
-            setFortnite(false),
-            setPedo(false);
+          setPerson({
+            ...person,
+            lesbian: false,
+            pedo: false,
+            boy: false,
+            kidBoyfriend: false,
+            lol: false,
+            autism: false,
+            gay: false,
+            kid: false,
+            fortnite: false,
+            kidGirl: false,
+            prettierThanAgata: false,
+            left: false,
+            girl: false,
+            woman: false,
+            snap: false,
+            megaWaz: false,
+            nonBinary: false,
+            inteligent: false,
+            imHuman: false,
+            man: false,
+            imExist: false,
+            sigma: false,
+          });
         }}
         text="Disable all"
       />
