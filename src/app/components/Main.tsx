@@ -36,7 +36,7 @@ function Main() {
             setPerson({ ...person, imExist: true });
           },
           () => {
-            setPerson({ ...person, imExist: false });
+            setPerson({ ...person, imExist: false, megaWaz: false });
           }
         );
       },
@@ -65,10 +65,10 @@ function Main() {
           person.man,
           person.man,
           () => {
-            setPerson({ ...person, man: true });
+            setPerson({ ...person, man: true, imHuman: true, woman: false });
           },
           () => {
-            setPerson({ ...person, man: false });
+            setPerson({ ...person, man: false, gay: false });
           }
         );
       },
@@ -81,10 +81,10 @@ function Main() {
           person.woman,
           person.woman,
           () => {
-            setPerson({ ...person, woman: true });
+            setPerson({ ...person, woman: true, man: false });
           },
           () => {
-            setPerson({ ...person, woman: false });
+            setPerson({ ...person, woman: false, lesbian: false });
           }
         );
       },
@@ -97,10 +97,16 @@ function Main() {
           person.inteligent,
           person.inteligent,
           () => {
-            setPerson({ ...person, inteligent: true });
+            setPerson({
+              ...person,
+              inteligent: true,
+              left: false,
+              snap: false,
+              lol: false,
+            });
           },
           () => {
-            setPerson({ ...person, inteligent: false });
+            setPerson({ ...person, inteligent: false, sigma: false });
           }
         );
       },
@@ -113,7 +119,13 @@ function Main() {
           person.nonBinary,
           person.nonBinary,
           () => {
-            setPerson({ ...person, nonBinary: true });
+            setPerson({
+              ...person,
+              nonBinary: true,
+              imHuman: false,
+              man: false,
+              woman: false,
+            });
           },
           () => {
             setPerson({ ...person, nonBinary: false });
@@ -145,10 +157,10 @@ function Main() {
           person.boy,
           person.boy,
           () => {
-            setPerson({ ...person, boy: true });
+            setPerson({ ...person, boy: true, girl: false });
           },
           () => {
-            setPerson({ ...person, boy: false });
+            setPerson({ ...person, boy: false, kidBoyfriend: false });
           }
         );
       },
@@ -161,10 +173,10 @@ function Main() {
           person.girl,
           person.girl,
           () => {
-            setPerson({ ...person, girl: true });
+            setPerson({ ...person, girl: true, boy: false });
           },
           () => {
-            setPerson({ ...person, girl: false });
+            setPerson({ ...person, girl: false, kidGirl: false });
           }
         );
       },
@@ -177,10 +189,10 @@ function Main() {
           person.kidBoyfriend,
           person.kidBoyfriend,
           () => {
-            setPerson({ ...person, kidBoyfriend: true });
+            setPerson({ ...person, kidBoyfriend: true, boy: true });
           },
           () => {
-            setPerson({ ...person, kidBoyfriend: false });
+            setPerson({ ...person, kidBoyfriend: false, boy: false });
           }
         );
       },
@@ -193,10 +205,10 @@ function Main() {
           person.kidGirl,
           person.kidGirl,
           () => {
-            setPerson({ ...person, kidGirl: true });
+            setPerson({ ...person, kidGirl: true, girl: true });
           },
           () => {
-            setPerson({ ...person, kidGirl: false });
+            setPerson({ ...person, kidGirl: false, girl: false });
           }
         );
       },
@@ -209,7 +221,12 @@ function Main() {
           person.left,
           person.left,
           () => {
-            setPerson({ ...person, left: true });
+            setPerson({
+              ...person,
+              left: true,
+              inteligent: false,
+              sigma: false,
+            });
           },
           () => {
             setPerson({ ...person, left: false });
@@ -225,7 +242,15 @@ function Main() {
           person.sigma,
           person.sigma,
           () => {
-            setPerson({ ...person, sigma: true });
+            setPerson({
+              ...person,
+              sigma: true,
+              left: false,
+              lol: false,
+              gay: false,
+              lesbian: false,
+              inteligent: true,
+            });
           },
           () => {
             setPerson({ ...person, sigma: false });
@@ -241,10 +266,17 @@ function Main() {
           person.gay,
           person.gay,
           () => {
-            setPerson({ ...person, gay: true });
+            setPerson({
+              ...person,
+              gay: true,
+              man: true,
+              woman: false,
+              nonBinary: false,
+              imHuman: true,
+            });
           },
           () => {
-            setPerson({ ...person, gay: false });
+            setPerson({ ...person, gay: false, man: false });
           }
         );
       },
@@ -257,7 +289,14 @@ function Main() {
           person.lesbian,
           person.lesbian,
           () => {
-            setPerson({ ...person, lesbian: true });
+            setPerson({
+              ...person,
+              lesbian: true,
+              woman: true,
+              man: false,
+              nonBinary: false,
+              imHuman: true,
+            });
           },
           () => {
             setPerson({ ...person, lesbian: false });
@@ -273,7 +312,12 @@ function Main() {
           person.prettierThanAgata,
           person.prettierThanAgata,
           () => {
-            setPerson({ ...person, prettierThanAgata: true });
+            setPerson({
+              ...person,
+              prettierThanAgata: true,
+              imExist: false,
+              megaWaz: false,
+            });
           },
           () => {
             setPerson({ ...person, prettierThanAgata: false });
@@ -292,7 +336,7 @@ function Main() {
             setPerson({ ...person, autism: true });
           },
           () => {
-            setPerson({ ...person, autism: false });
+            setPerson({ ...person, autism: false, lol: false });
           }
         );
       },
@@ -305,10 +349,10 @@ function Main() {
           person.megaWaz,
           person.megaWaz,
           () => {
-            setPerson({ ...person, megaWaz: true });
+            setPerson({ ...person, megaWaz: true, imExist: true });
           },
           () => {
-            setPerson({ ...person, megaWaz: false });
+            setPerson({ ...person, megaWaz: false, imExist: false });
           }
         );
       },
@@ -321,7 +365,12 @@ function Main() {
           person.snap,
           person.snap,
           () => {
-            setPerson({ ...person, snap: true });
+            setPerson({
+              ...person,
+              snap: true,
+              inteligent: false,
+              sigma: false,
+            });
           },
           () => {
             setPerson({ ...person, snap: false });
@@ -353,7 +402,7 @@ function Main() {
           person.lol,
           person.lol,
           () => {
-            setPerson({ ...person, lol: true });
+            setPerson({ ...person, lol: true, autism: true });
           },
           () => {
             setPerson({ ...person, lol: false });
@@ -369,7 +418,7 @@ function Main() {
           person.fortnite,
           person.fortnite,
           () => {
-            setPerson({ ...person, fortnite: true });
+            setPerson({ ...person, fortnite: true, kid: true });
           },
           () => {
             setPerson({ ...person, fortnite: false });
@@ -385,7 +434,7 @@ function Main() {
           person.pedo,
           person.pedo,
           () => {
-            setPerson({ ...person, pedo: true });
+            setPerson({ ...person, pedo: true, kid: false });
           },
           () => {
             setPerson({ ...person, pedo: false });
@@ -411,47 +460,7 @@ function Main() {
 
   return (
     <>
-      <div className="flex items-center justify-center w-screen h-screen flex-col">
-        <Button
-          blur={`${profile ? "blur" : ""}`}
-          click={() => {
-            setProfile(true);
-          }}
-          text="See your Profile"
-        />
-        <Button
-          blur={`${profile ? "blur" : ""}`}
-          click={() => {
-            setPerson({
-              ...person,
-              lesbian: false,
-              pedo: false,
-              boy: false,
-              kidBoyfriend: false,
-              lol: false,
-              autism: false,
-              gay: false,
-              kid: false,
-              fortnite: false,
-              kidGirl: false,
-              prettierThanAgata: false,
-              left: false,
-              girl: false,
-              woman: false,
-              snap: false,
-              megaWaz: false,
-              nonBinary: false,
-              inteligent: false,
-              imHuman: false,
-              man: false,
-              imExist: false,
-              sigma: false,
-            });
-          }}
-          text="Disable all"
-        />
-      </div>
-      <>
+      <div className="flex items-center justify-start w-screen h-screen flex-col gap-10">
         {profile && (
           <Profile
             text={
@@ -504,7 +513,63 @@ function Main() {
             }}
           />
         )}
-      </>
+        <div className="flex items-center justify-center h-20 text-7xl font-bold text-gray-400">
+          MARK YOURSELF
+        </div>
+        <div className="flex flex-row gap-10">
+          <Button
+            blur={`${profile ? "blur" : ""}`}
+            click={() => {
+              setProfile(true);
+            }}
+            text="See your Profile"
+          />
+          <Button
+            blur={`${profile ? "blur" : ""}`}
+            click={() => {
+              setPerson({
+                ...person,
+                lesbian: false,
+                pedo: false,
+                boy: false,
+                kidBoyfriend: false,
+                lol: false,
+                autism: false,
+                gay: false,
+                kid: false,
+                fortnite: false,
+                kidGirl: false,
+                prettierThanAgata: false,
+                left: false,
+                girl: false,
+                woman: false,
+                snap: false,
+                megaWaz: false,
+                nonBinary: false,
+                inteligent: false,
+                imHuman: false,
+                man: false,
+                imExist: false,
+                sigma: false,
+              });
+            }}
+            text="Disable all"
+          />
+        </div>
+        <div
+          className={`grid grid-flow-col grid-rows-8 gap-10 ${
+            profile ? "blur" : ""
+          }`}
+        >
+          {toggleConfig.map((el) => {
+            return (
+              <div className="flex items-center justify-start w-[350px] h-10">
+                <Toggle text={el.name} state={el.stateKey} change={el.action} />
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </>
   );
 }
