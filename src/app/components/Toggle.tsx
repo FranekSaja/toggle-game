@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 interface Toggle {
   state: boolean;
   text: string;
