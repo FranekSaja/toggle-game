@@ -23,25 +23,4 @@ export class Person {
   pedo = false;
   boy = false;
   kidBoyfriend = false;
-
-  setWoman = () => {
-    if (!this.woman) {
-      this.man = false;
-      this.woman = true;
-      this.nonBinary = true;
-      this.lesbian = true;
-    } else {
-      this.woman = false;
-    }
-  };
-  setMan = () => {
-    if (!this.man) {
-      this.man = true;
-      this.woman = true;
-      this.nonBinary = false;
-      this.lesbian = false;
-    } else {
-      this.man = false;
-    }
-  };
 }
