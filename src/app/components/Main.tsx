@@ -26,15 +26,36 @@ function Main() {
 
   const exist = () => {
     setPerson((prevPerson) => ({ ...prevPerson, imExist: true }));
+    prettierthanagataOff();
+  };
+
+  const existOff = () => {
+    setPerson((prevPerson) => ({
+      ...prevPerson,
+      imExist: false,
+    }));
+    megawazOff();
+    madethispageOff();
   };
 
   const human = () => {
     setPerson((prevPerson) => ({
       ...prevPerson,
       imHuman: true,
-      nonBinary: false,
-      megaWaz: false,
     }));
+    nonbinaryOff();
+    megawazOff();
+  };
+
+  const humanOff = () => {
+    setPerson((prevPerson) => ({
+      ...prevPerson,
+      imHuman: false,
+    }));
+
+    womanOff();
+    manOff();
+    madethispageOff();
   };
 
   const man = () => {
@@ -45,6 +66,19 @@ function Main() {
       nonBinary: false,
     }));
     human();
+    if (person.lol) {
+      gay();
+    }
+  };
+
+  const manOff = () => {
+    setPerson((prevPerson) => ({
+      ...prevPerson,
+      man: false,
+      human: false,
+    }));
+    gayOff();
+    madethispageOff();
   };
 
   const woman = () => {
@@ -56,6 +90,16 @@ function Main() {
       gay: false,
     }));
     human();
+    madethispageOff();
+  };
+
+  const womanOff = () => {
+    setPerson((prevPerson) => ({
+      ...prevPerson,
+      woman: false,
+      human: false,
+      lesbian: false,
+    }));
   };
 
   const inteligent = () => {
@@ -68,30 +112,55 @@ function Main() {
     }));
   };
 
+  const inteligentOff = () => {
+    setPerson((prevPerson) => ({
+      ...prevPerson,
+      inteligent: false,
+      sigma: false,
+      madePage: false,
+    }));
+  };
+
   const nonbinary = () => {
     setPerson((prevPerson) => ({
       ...prevPerson,
       nonBinary: true,
-      imHuman: false,
-      man: false,
-      woman: false,
     }));
+    humanOff();
+    madethispageOff();
+  };
+
+  const nonbinaryOff = () => {
+    setPerson((prevPerson) => ({ ...prevPerson, nonBinary: false }));
   };
 
   const kid = () => {
     setPerson((prevPerson) => ({ ...prevPerson, kid: true, pedo: false }));
+    madethispageOff();
+  };
+
+  const kidOff = () => {
+    setPerson((prevPerson) => ({ ...prevPerson, kid: false, fortnite: false }));
+    if (person.kidBoyfriend || person.kidGirl) {
+      pedofile();
+    }
   };
 
   const boyfriend = () => {
     setPerson((prevPerson) => ({
       ...prevPerson,
       boy: true,
-      girl: false,
-      kidGirl: false,
     }));
+    kidgirlOff();
+    madethispageOff();
     if (person.man) {
       gay();
     }
+  };
+
+  const boyfriendOff = () => {
+    setPerson((prevPerson) => ({ ...prevPerson }));
+    kidboyOff();
   };
 
   const girlfriend = () => {
@@ -104,6 +173,14 @@ function Main() {
     if (person.woman) {
       lesbian();
     }
+    if (person.man) {
+      ligalegendOff();
+    }
+  };
+
+  const girlfriendOff = () => {
+    setPerson((prevPerson) => ({ ...prevPerson, madePage: false }));
+    kidgirlOff();
   };
 
   const kidboy = () => {
@@ -112,34 +189,60 @@ function Main() {
       kidBoyfriend: true,
     }));
     boyfriend();
+    madethispageOff();
     kid();
+  };
+
+  const kidboyOff = () => {
+    setPerson((prevPerson) => ({
+      ...prevPerson,
+      kidBoyfriend: false,
+      boy: false,
+    }));
   };
 
   const kidgirl = () => {
     setPerson((prevPerson) => ({ ...prevPerson, kidGirl: true }));
     girlfriend();
+    madethispageOff();
     kid();
+  };
+
+  const kidgirlOff = () => {
+    setPerson((prevPerson) => ({ ...prevPerson, kidGirl: false, girl: false }));
   };
 
   const lefist = () => {
     setPerson((prevPerson) => ({
       ...prevPerson,
       left: true,
-      inteligent: false,
-      sigma: false,
     }));
+    inteligentOff();
+    sigmaOff();
+  };
+
+  const lefistOff = () => {
+    setPerson((prevPerson) => ({ ...prevPerson, left: false }));
   };
 
   const sigma = () => {
     setPerson((prevPerson) => ({
       ...prevPerson,
       sigma: true,
-      gay: false,
-      lesbian: false,
       autism: false,
       pedo: false,
+      gay: false,
+      lesbian: false,
     }));
     inteligent();
+  };
+
+  const sigmaOff = () => {
+    setPerson((prevPerson) => ({
+      ...prevPerson,
+      sigma: false,
+      madePage: false,
+    }));
   };
 
   const lesbian = () => {
@@ -147,9 +250,17 @@ function Main() {
       ...prevPerson,
       lesbian: true,
       gay: false,
-      sigma: false,
     }));
     woman();
+    sigmaOff();
+  };
+
+  const lesbianOff = () => {
+    setPerson((prevPerson) => ({
+      ...prevPerson,
+      lesbian: false,
+    }));
+    kidgirlOff();
   };
 
   const gay = () => {
@@ -157,35 +268,61 @@ function Main() {
       ...prevPerson,
       gay: true,
       lesbian: false,
-      sigma: false,
     }));
     man();
+    sigmaOff();
+  };
+
+  const gayOff = () => {
+    setPerson((prevPerson) => ({ ...prevPerson, gay: false }));
+    kidboyOff();
   };
 
   const prettierthanagata = () => {
     setPerson((prevPerson) => ({
       ...prevPerson,
       prettierThanAgata: true,
-      imExist: false,
-      megaWaz: false,
     }));
+    existOff();
+  };
+
+  const prettierthanagataOff = () => {
+    setPerson((prevPerson) => ({ ...prevPerson, prettierThanAgata: false }));
   };
 
   const autism = () => {
-    setPerson((prevPerson) => ({ ...prevPerson, autism: true, sigma: false }));
+    setPerson((prevPerson) => ({ ...prevPerson, autism: true }));
+    sigmaOff();
+  };
+
+  const autismOff = () => {
+    setPerson((prevPerson) => ({ ...prevPerson, autism: false, lol: false }));
   };
 
   const megawaz = () => {
     setPerson((prevPerson) => ({ ...prevPerson, megaWaz: true }));
     exist();
+    inteligent();
+    humanOff();
+    kidOff();
+    madethispageOff();
+  };
+
+  const megawazOff = () => {
+    setPerson((prevPerson) => ({ ...prevPerson, megaWaz: false }));
   };
 
   const snapchat = () => {
     setPerson((prevPerson) => ({
       ...prevPerson,
       snap: true,
-      inteligent: false,
     }));
+    sigmaOff();
+    inteligentOff();
+  };
+
+  const snapchatOff = () => {
+    setPerson((prevPerson) => ({ ...prevPerson, snap: false }));
   };
 
   const madethispage = () => {
@@ -195,15 +332,33 @@ function Main() {
     human();
     exist();
     girlfriend();
+    kidOff();
+    kidboyOff();
+    kidgirlOff();
+  };
+
+  const madethispageOff = () => {
+    setPerson((prevPerson) => ({ ...prevPerson, madePage: false }));
   };
 
   const ligalegend = () => {
     setPerson((prevPerson) => ({
       ...prevPerson,
       lol: true,
-      inteligent: false,
     }));
     autism();
+    sigmaOff();
+    inteligentOff();
+    if (!person.woman) {
+      kidgirlOff();
+    }
+    if (person.man) {
+      gay();
+    }
+  };
+
+  const ligalegendOff = () => {
+    setPerson((prevPerson) => ({ ...prevPerson, lol: false }));
   };
 
   const fortnite = () => {
@@ -211,12 +366,25 @@ function Main() {
     kid();
   };
 
+  const fortniteOff = () => {
+    setPerson((prevPerson) => ({ ...prevPerson, fortnite: false }));
+  };
+
   const pedofile = () => {
     setPerson((prevPerson) => ({
       ...prevPerson,
       pedo: true,
-      sigma: false,
       kid: false,
+    }));
+    sigmaOff();
+  };
+
+  const pedofileOff = () => {
+    setPerson((prevPerson) => ({
+      ...prevPerson,
+      pedo: false,
+      kidBoyfriend: false,
+      kidGirl: false,
     }));
   };
 
@@ -232,7 +400,7 @@ function Main() {
             exist();
           },
           () => {
-            setPerson({ ...person, imExist: false, megaWaz: false });
+            existOff();
           }
         );
       },
@@ -248,7 +416,7 @@ function Main() {
             human();
           },
           () => {
-            setPerson({ ...person, imHuman: false });
+            humanOff();
           }
         );
       },
@@ -267,7 +435,7 @@ function Main() {
             }
           },
           () => {
-            setPerson({ ...person, man: false, gay: false });
+            manOff();
           }
         );
       },
@@ -286,7 +454,7 @@ function Main() {
             }
           },
           () => {
-            setPerson({ ...person, woman: false, lesbian: false });
+            womanOff();
           }
         );
       },
@@ -302,7 +470,7 @@ function Main() {
             inteligent();
           },
           () => {
-            setPerson({ ...person, inteligent: false, sigma: false });
+            inteligentOff();
           }
         );
       },
@@ -318,7 +486,7 @@ function Main() {
             nonbinary();
           },
           () => {
-            setPerson({ ...person, nonBinary: false });
+            nonbinaryOff();
           }
         );
       },
@@ -332,13 +500,15 @@ function Main() {
           person.kid,
           () => {
             kid();
+            if (person.girl) {
+              kidgirl();
+            }
+            if (person.boy) {
+              kidboy();
+            }
           },
           () => {
-            if (!person.kidBoyfriend || !person.kidGirl) {
-              setPerson({ ...person, kid: false });
-            } else {
-              setPerson({ ...person, kid: false, pedo: true });
-            }
+            kidOff();
           }
         );
       },
@@ -352,9 +522,12 @@ function Main() {
           person.boy,
           () => {
             boyfriend();
+            if (person.kid) {
+              kidboy();
+            }
           },
           () => {
-            setPerson({ ...person, boy: false, kidBoyfriend: false });
+            boyfriendOff();
           }
         );
       },
@@ -368,9 +541,12 @@ function Main() {
           person.girl,
           () => {
             girlfriend();
+            if (person.kid) {
+              kidgirl();
+            }
           },
           () => {
-            setPerson({ ...person, girl: false, kidGirl: false });
+            girlfriendOff();
           }
         );
       },
@@ -386,7 +562,7 @@ function Main() {
             kidboy();
           },
           () => {
-            setPerson({ ...person, kidBoyfriend: false, boy: false });
+            kidboyOff();
           }
         );
       },
@@ -402,7 +578,7 @@ function Main() {
             kidgirl();
           },
           () => {
-            setPerson({ ...person, kidGirl: false, girl: false });
+            kidgirlOff();
           }
         );
       },
@@ -418,7 +594,7 @@ function Main() {
             lefist();
           },
           () => {
-            setPerson({ ...person, left: false });
+            lefistOff();
           }
         );
       },
@@ -434,7 +610,7 @@ function Main() {
             sigma();
           },
           () => {
-            setPerson({ ...person, sigma: false });
+            sigmaOff();
           }
         );
       },
@@ -450,7 +626,7 @@ function Main() {
             gay();
           },
           () => {
-            setPerson({ ...person, gay: false });
+            gayOff();
           }
         );
       },
@@ -466,7 +642,7 @@ function Main() {
             lesbian();
           },
           () => {
-            setPerson({ ...person, lesbian: false });
+            lesbianOff();
           }
         );
       },
@@ -482,7 +658,7 @@ function Main() {
             prettierthanagata();
           },
           () => {
-            setPerson({ ...person, prettierThanAgata: false });
+            prettierthanagataOff();
           }
         );
       },
@@ -498,7 +674,7 @@ function Main() {
             autism();
           },
           () => {
-            setPerson({ ...person, autism: false, lol: false });
+            autismOff();
           }
         );
       },
@@ -514,7 +690,7 @@ function Main() {
             megawaz();
           },
           () => {
-            setPerson({ ...person, megaWaz: false, imExist: false });
+            megawazOff();
           }
         );
       },
@@ -530,7 +706,7 @@ function Main() {
             snapchat();
           },
           () => {
-            setPerson({ ...person, snap: false });
+            snapchatOff();
           }
         );
       },
@@ -546,13 +722,7 @@ function Main() {
             madethispage();
           },
           () => {
-            setPerson({
-              ...person,
-              madePage: false,
-              kid: false,
-              kidGirl: false,
-              fortnite: false,
-            });
+            madethispageOff();
           }
         );
       },
@@ -568,7 +738,7 @@ function Main() {
             ligalegend();
           },
           () => {
-            setPerson({ ...person, lol: false });
+            ligalegendOff();
           }
         );
       },
@@ -584,7 +754,7 @@ function Main() {
             fortnite();
           },
           () => {
-            setPerson({ ...person, fortnite: false });
+            fortniteOff();
           }
         );
       },
@@ -600,7 +770,7 @@ function Main() {
             pedofile();
           },
           () => {
-            setPerson({ ...person, pedo: false });
+            pedofileOff();
           }
         );
       },
