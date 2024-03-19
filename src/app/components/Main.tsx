@@ -51,10 +51,12 @@ function Main() {
     setPerson((prevPerson) => ({
       ...prevPerson,
       imHuman: false,
+      man: false,
+      gay: false,
+      lesbian: false,
+      woman: false,
     }));
 
-    womanOff();
-    manOff();
     madethispageOff();
   };
 
@@ -63,10 +65,10 @@ function Main() {
       ...prevPerson,
       man: true,
       woman: false,
-      nonBinary: false,
+      lesbian: false,
     }));
     human();
-    if (person.lol) {
+    if (person.lol && !person.gay) {
       gay();
     }
   };
@@ -76,8 +78,8 @@ function Main() {
       ...prevPerson,
       man: false,
       human: false,
+      gay: false,
     }));
-    gayOff();
     madethispageOff();
   };
 
@@ -86,7 +88,6 @@ function Main() {
       ...prevPerson,
       woman: true,
       man: false,
-      nonBinary: false,
       gay: false,
     }));
     human();
@@ -137,6 +138,7 @@ function Main() {
   const kid = () => {
     setPerson((prevPerson) => ({ ...prevPerson, kid: true, pedo: false }));
     madethispageOff();
+    megawazOff();
   };
 
   const kidOff = () => {
@@ -204,7 +206,6 @@ function Main() {
   const kidgirl = () => {
     setPerson((prevPerson) => ({ ...prevPerson, kidGirl: true }));
     girlfriend();
-    madethispageOff();
     kid();
   };
 
@@ -276,6 +277,9 @@ function Main() {
   const gayOff = () => {
     setPerson((prevPerson) => ({ ...prevPerson, gay: false }));
     kidboyOff();
+    if (person.lol) {
+      ligalegendOff();
+    }
   };
 
   const prettierthanagata = () => {
@@ -302,10 +306,10 @@ function Main() {
   const megawaz = () => {
     setPerson((prevPerson) => ({ ...prevPerson, megaWaz: true }));
     exist();
-    inteligent();
+    inteligent;
     humanOff();
-    kidOff();
     madethispageOff();
+    kidOff();
   };
 
   const megawazOff = () => {
@@ -326,15 +330,19 @@ function Main() {
   };
 
   const madethispage = () => {
-    setPerson((prevPerson) => ({ ...prevPerson, madePage: true }));
+    setPerson((prevPerson) => ({
+      ...prevPerson,
+      madePage: true,
+      kidGirl: false,
+      kid: false,
+      man: true,
+      woman: false,
+      fortnite: false,
+    }));
     sigma();
-    man();
-    human();
     exist();
+    human();
     girlfriend();
-    kidOff();
-    kidboyOff();
-    kidgirlOff();
   };
 
   const madethispageOff = () => {
@@ -364,10 +372,17 @@ function Main() {
   const fortnite = () => {
     setPerson((prevPerson) => ({ ...prevPerson, fortnite: true }));
     kid();
+    if (person.girl) {
+      kidgirl();
+    }
+    if (person.boy) {
+      kidboy();
+    }
   };
 
   const fortniteOff = () => {
     setPerson((prevPerson) => ({ ...prevPerson, fortnite: false }));
+    kidOff();
   };
 
   const pedofile = () => {
@@ -385,6 +400,7 @@ function Main() {
       pedo: false,
       kidBoyfriend: false,
       kidGirl: false,
+      kid: false,
     }));
   };
 
@@ -844,7 +860,11 @@ function Main() {
             }}
           />
         )}
-        <div className="flex items-center justify-center h-20 text-7xl font-bold text-gray-400">
+        <div
+          className={`flex items-center justify-center h-20 text-7xl font-bold text-gray-400 ${
+            profile ? "blur" : ""
+          }`}
+        >
           MARK YOURSELF
         </div>
         <div className="flex flex-row gap-10">
@@ -882,6 +902,7 @@ function Main() {
                 man: false,
                 imExist: false,
                 sigma: false,
+                madePage: false,
               });
             }}
             text="Disable all"
