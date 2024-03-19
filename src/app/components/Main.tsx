@@ -8,7 +8,7 @@ import { Person } from "../classes/person.class";
 
 function Main() {
   const [person, setPerson] = useState<Person>(new Person());
-  const [profile, setProfile] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleState = (
     state: any,
@@ -808,7 +808,7 @@ function Main() {
   return (
     <>
       <div className="flex items-center justify-start w-screen h-screen flex-col gap-10">
-        {profile && (
+        {isModalOpen && (
           <Profile
             text={
               <div className="flex items-start justify-center flex-col">
@@ -856,27 +856,27 @@ function Main() {
               </div>
             }
             exit={() => {
-              setProfile(false);
+              setIsModalOpen(false);
             }}
           />
         )}
         <div
           className={`flex items-center justify-center h-20 text-7xl font-bold text-gray-400 ${
-            profile ? "blur" : ""
+            isModalOpen ? "blur" : ""
           }`}
         >
           MARK YOURSELF
         </div>
         <div className="flex flex-row gap-10">
           <Button
-            blur={`${profile ? "blur" : ""}`}
+            blur={`${isModalOpen ? "blur" : ""}`}
             click={() => {
-              setProfile(true);
+              setIsModalOpen(true);
             }}
             text="See your Profile"
           />
           <Button
-            blur={`${profile ? "blur" : ""}`}
+            blur={`${isModalOpen ? "blur" : ""}`}
             click={() => {
               setPerson({
                 ...person,
@@ -910,7 +910,7 @@ function Main() {
         </div>
         <div
           className={`grid grid-flow-col grid-rows-8 gap-10 ${
-            profile ? "blur" : ""
+            isModalOpen ? "blur" : ""
           }`}
         >
           {toggleConfig.map((el) => {
