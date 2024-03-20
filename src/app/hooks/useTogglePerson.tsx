@@ -68,30 +68,14 @@ export function useTogglePerson() {
       name: "I exist",
       stateKey: person.imExist,
       action: () => {
-        toggleState(
-          person.imExist,
-          () => {
-            exist();
-          },
-          () => {
-            existOff();
-          }
-        );
+        toggleState(person.imExist, exist, existOff);
       },
     },
     {
       name: "I am Human",
       stateKey: person.imHuman,
       action: () => {
-        toggleState(
-          person.imHuman,
-          () => {
-            human();
-          },
-          () => {
-            humanOff();
-          }
-        );
+        toggleState(person.imHuman, human, humanOff);
       },
     },
     {
@@ -106,9 +90,7 @@ export function useTogglePerson() {
               gay();
             }
           },
-          () => {
-            manOff();
-          }
+          manOff
         );
       },
     },
@@ -124,9 +106,7 @@ export function useTogglePerson() {
               lesbian();
             }
           },
-          () => {
-            womanOff();
-          }
+          womanOff
         );
       },
     },
@@ -134,30 +114,14 @@ export function useTogglePerson() {
       name: "I am Intelligent",
       stateKey: person.inteligent,
       action: () => {
-        toggleState(
-          person.inteligent,
-          () => {
-            inteligent();
-          },
-          () => {
-            inteligentOff();
-          }
-        );
+        toggleState(person.inteligent, inteligent, inteligentOff);
       },
     },
     {
       name: "I am non-binary",
       stateKey: person.nonBinary,
       action: () => {
-        toggleState(
-          person.nonBinary,
-          () => {
-            nonbinary();
-          },
-          () => {
-            nonbinaryOff();
-          }
-        );
+        toggleState(person.nonBinary, nonbinary, nonbinaryOff);
       },
     },
     {
@@ -175,9 +139,7 @@ export function useTogglePerson() {
               kidboy();
             }
           },
-          () => {
-            kidOff();
-          }
+          kidOff
         );
       },
     },
@@ -193,9 +155,7 @@ export function useTogglePerson() {
               kidboy();
             }
           },
-          () => {
-            boyfriendOff();
-          }
+          boyfriendOff
         );
       },
     },
@@ -211,9 +171,7 @@ export function useTogglePerson() {
               kidgirl();
             }
           },
-          () => {
-            girlfriendOff();
-          }
+          girlfriendOff
         );
       },
     },
@@ -221,90 +179,42 @@ export function useTogglePerson() {
       name: "My boyfriend is under 13",
       stateKey: person.kidBoyfriend,
       action: () => {
-        toggleState(
-          person.kidBoyfriend,
-          () => {
-            kidboy();
-          },
-          () => {
-            kidboyOff();
-          }
-        );
+        toggleState(person.kidBoyfriend, kidboy, kidboyOff);
       },
     },
     {
       name: "My girlfriend is under 13",
       stateKey: person.kidGirl,
       action: () => {
-        toggleState(
-          person.kidGirl,
-          () => {
-            kidgirl();
-          },
-          () => {
-            kidgirlOff();
-          }
-        );
+        toggleState(person.kidGirl, kidgirl, kidgirlOff);
       },
     },
     {
       name: "I vote for the left",
       stateKey: person.left,
       action: () => {
-        toggleState(
-          person.left,
-          () => {
-            lefist();
-          },
-          () => {
-            lefistOff();
-          }
-        );
+        toggleState(person.left, lefist, lefistOff);
       },
     },
     {
       name: "I am Sigma",
       stateKey: person.sigma,
       action: () => {
-        toggleState(
-          person.sigma,
-          () => {
-            sigma();
-          },
-          () => {
-            sigmaOff();
-          }
-        );
+        toggleState(person.sigma, sigma, sigmaOff);
       },
     },
     {
       name: "I am Gay",
       stateKey: person.gay,
       action: () => {
-        toggleState(
-          person.gay,
-          () => {
-            gay();
-          },
-          () => {
-            gayOff();
-          }
-        );
+        toggleState(person.gay, gay, gayOff);
       },
     },
     {
       name: "I am lesbian",
       stateKey: person.lesbian,
       action: () => {
-        toggleState(
-          person.lesbian,
-          () => {
-            lesbian();
-          },
-          () => {
-            lesbianOff();
-          }
-        );
+        toggleState(person.lesbian, lesbian, lefistOff);
       },
     },
     {
@@ -313,12 +223,8 @@ export function useTogglePerson() {
       action: () => {
         toggleState(
           person.prettierThanAgata,
-          () => {
-            prettierthanagata();
-          },
-          () => {
-            prettierthanagataOff();
-          }
+          prettierthanagata,
+          prettierthanagataOff
         );
       },
     },
@@ -326,90 +232,42 @@ export function useTogglePerson() {
       name: "I have autism",
       stateKey: person.autism,
       action: () => {
-        toggleState(
-          person.autism,
-          () => {
-            autism();
-          },
-          () => {
-            autismOff();
-          }
-        );
+        toggleState(person.autism, autism, autismOff);
       },
     },
     {
       name: "I am Mega Wąż 9",
       stateKey: person.megaWaz,
       action: () => {
-        toggleState(
-          person.megaWaz,
-          () => {
-            megawaz();
-          },
-          () => {
-            megawazOff();
-          }
-        );
+        toggleState(person.megaWaz, megawaz, megawazOff);
       },
     },
     {
       name: "I use snapchat",
       stateKey: person.snap,
       action: () => {
-        toggleState(
-          person.snap,
-          () => {
-            snapchat();
-          },
-          () => {
-            snapchatOff();
-          }
-        );
+        toggleState(person.snap, snapchat, snapchatOff);
       },
     },
     {
       name: "I made this page",
       stateKey: person.madePage,
       action: () => {
-        toggleState(
-          person.madePage,
-          () => {
-            madethispage();
-          },
-          () => {
-            madethispageOff();
-          }
-        );
+        toggleState(person.madePage, madethispage, madethispageOff);
       },
     },
     {
       name: "I play League of Legends",
       stateKey: person.lol,
       action: () => {
-        toggleState(
-          person.lol,
-          () => {
-            ligalegend();
-          },
-          () => {
-            ligalegendOff();
-          }
-        );
+        toggleState(person.lol, ligalegend, ligalegendOff);
       },
     },
     {
       name: "I play Fortnite",
       stateKey: person.fortnite,
       action: () => {
-        toggleState(
-          person.fortnite,
-          () => {
-            fortnite();
-          },
-          () => {
-            fortniteOff();
-          }
-        );
+        toggleState(person.fortnite, fortnite, fortniteOff);
       },
     },
     {
