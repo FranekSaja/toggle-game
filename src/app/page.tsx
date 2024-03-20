@@ -1,6 +1,6 @@
 import React from "react";
-import Main from "./components/Main";
+import UserInterface from "./components/UserInterface";
 
 export default function Home() {
-  return <Main />;
+  return <UserInterface />;
 }

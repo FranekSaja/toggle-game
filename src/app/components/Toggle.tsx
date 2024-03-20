@@ -1,17 +1,15 @@
-import React, { useState } from "react";
-
 interface Toggle {
-  state: boolean;
+  isEnabled: boolean;
   text: string;
   change: () => void;
 }
 
-function Toggle({ state, text, change }: Toggle) {
+function Toggle({ isEnabled, text, change }: Toggle) {
   return (
     <div className="flex items-center justify-center gap-12 flex-row">
       <button
         className={`flex items-center w-20 h-10 p-[4px] rounded-full  transition-all ${
-          state ? "bg-green-500 justify-end" : "bg-gray-500 justify-start"
+          isEnabled ? "bg-green-500 justify-end" : "bg-gray-500 justify-start"
         }`}
         onClick={() => {
           change();
