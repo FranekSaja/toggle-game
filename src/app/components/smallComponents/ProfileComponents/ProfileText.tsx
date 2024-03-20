@@ -1,8 +1,6 @@
 import React from "react";
 import Profile from "./Profile";
 import ProfileEl from "../../ProfileEl";
-import { Person } from "../../../classes/person.class";
-import { useState } from "react";
 import { usePerson } from "@/app/hooks/usePerson";
 
 interface ProfileProps {

@@ -214,7 +214,7 @@ export function useTogglePerson() {
       name: "I am lesbian",
       stateKey: person.lesbian,
       action: () => {
-        toggleState(person.lesbian, lesbian, lefistOff);
+        toggleState(person.lesbian, lesbian, lesbianOff);
       },
     },
     {
