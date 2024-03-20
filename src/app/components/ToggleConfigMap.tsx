@@ -9,28 +9,20 @@ interface MapProps {
 function ToggleConfigMap({ modal }: MapProps) {
   const { toggleConfig } = useTogglePerson();
   return (
-    <>
+    <div
+      className={`grid grid-flow-col grid-rows-8 gap-10 ${modal ? "blur" : ""}`}
+    >
       {toggleConfig.map((el) => {
         return (
           <div
-            className={`grid grid-flow-col grid-rows-8 gap-10 ${
-              modal ? "blur" : ""
-            }`}
+            key={el.name}
+            className="flex items-center justify-start w-[350px] h-10"
           >
-            <div
-              key={el.name}
-              className="flex items-center justify-start w-[350px] h-10"
-            >
-              <Toggle
-                text={el.name}
-                isEnabled={el.stateKey}
-                change={el.action}
-              />
-            </div>
+            <Toggle text={el.name} isEnabled={el.stateKey} change={el.action} />
           </div>
         );
       })}
-    </>
+    </div>
   );
 }
 
